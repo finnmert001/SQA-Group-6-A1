@@ -3,6 +3,15 @@ extends layout
 block content
   form(action=`/edit/${post.id}`, method="POST")
     input(type="text", name="title", value=post.title, required)
+    select(name="topic", required)
+      option(value="", disabled) Select a Topic
+      option(value="General", selected=post.topic === "General") General
+      option(value="Technology", selected=post.topic === "Technology") Technology
+      option(value="Science", selected=post.topic === "Science") Science
+      option(value="Health", selected=post.topic === "Health") Health
+      option(value="Lifestyle", selected=post.topic === "Lifestyle") Lifestyle
+      option(value="Education", selected=post.topic === "Education") Education
+      option(value="Politics", selected=post.topic === "Politics") Politics
     textarea(name="content", required)= post.content
     button(type="submit") Save Changes
 

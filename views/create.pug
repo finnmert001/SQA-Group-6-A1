@@ -4,6 +4,15 @@ block content
   form(action="/create", method="POST")
     input(type="text", name="title", placeholder="Title", required)
     input(type="text", name="author", placeholder="Author", required)
+    select(id="dropdown" name="topic" required)
+      option(value="", disabled, selected) Select a Topic
+      option(value="General") General
+      option(value="Technology") Technology
+      option(value="Science") Science
+      option(value="Health") Health
+      option(value="Lifestyle") Lifestyle
+      option(value="Education") Education
+      option(value="Politics") Politics
     textarea(name="content", placeholder="Content", required)
     button(type="submit") Create
 

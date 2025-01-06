@@ -14,11 +14,13 @@ block content
         hour12: false
       });
       document.write(formattedDate);
+  p.post-topic 
+    | Topic: #{post.topic}
   p.post-content= post.content
 
   form(action=`/edit/${post.id}`, method="GET")
     button(type="submit") Edit Post
   
   div(style="margin-top: 20px")
-    button(type="button", onclick="window.history.back()") Back
+    button(type="button", onclick="window.location.href='/'") Back
 
