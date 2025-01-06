@@ -2,8 +2,13 @@ extends layout
 
 block content
   form(action="/search", method="GET")
-    input(type="text", name="query", placeholder="Search by topic or title" required)
+    input(type="text", name="query", placeholder="Search by Topic or Title" required)
+    select(name="topic", onchange="this.form.submit()")
+      option(value="", disabled, selected) Sort by Topic
+      each suggestion in ["General", "Technology", "Science", "Health", "Lifestyle", "Education", "Politics"]
+        option(value=suggestion, selected=topic === suggestion) #{suggestion}
     button(type="submit") Search
+    button(type="button", onclick="window.location.href='/'") Reset
   
   ul
     each post in posts
