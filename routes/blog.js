@@ -1,10 +1,25 @@
 const express = require("express");
 const router = express.Router();
 const { BlogPost } = require("../models");
+const { Sequelize, Op } = require("sequelize");
 
 router.get("/", async (req, res) => {
   const posts = await BlogPost.findAll();
   res.render("index", { title: "Blog Posts", posts });
+});
+
+router.get("/search", async (req, res) => {
+  const query = req.query.query || "";
+  const posts = await BlogPost.findAll({
+    where: {
+      [Sequelize.Op.or]: [
+        { title: { [Sequelize.Op.like]: `%${query}%` } },
+        { topic: { [Sequelize.Op.like]: `%${query}%` } },
+      ],
+    },
+  });
+
+  res.render("index", { title: "Search Results", posts });
 });
 
 router.get("/create", (req, res) => {
