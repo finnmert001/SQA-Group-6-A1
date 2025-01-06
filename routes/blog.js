@@ -11,9 +11,10 @@ router.get("/", async (req, res) => {
 router.get("/search", async (req, res) => {
   const query = req.query.query || "";
   const topic = req.query.topic || "";
+  const author = req.query.author || "";
 
   let posts;
-  if (query.trim() === "" && topic === "") {
+  if (query.trim() === "" && topic === "" && author === "") {
     posts = await BlogPost.findAll();
   } else {
     posts = await BlogPost.findAll({
@@ -23,6 +24,7 @@ router.get("/search", async (req, res) => {
             [Sequelize.Op.or]: [
               { title: { [Op.like]: `%${query}%` } },
               { topic: { [Op.like]: `%${query}%` } },
+              { author: { [Op.like]: `%${query}%` } },
             ],
           },
           ...(topic ? [{ topic: topic }] : []),
@@ -36,6 +38,7 @@ router.get("/search", async (req, res) => {
     posts,
     query,
     topic,
+    author,
   });
 });
 
