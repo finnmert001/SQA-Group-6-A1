@@ -10,16 +10,34 @@ router.get("/", async (req, res) => {
 
 router.get("/search", async (req, res) => {
   const query = req.query.query || "";
-  const posts = await BlogPost.findAll({
-    where: {
-      [Sequelize.Op.or]: [
-        { title: { [Sequelize.Op.like]: `%${query}%` } },
-        { topic: { [Sequelize.Op.like]: `%${query}%` } },
-      ],
-    },
-  });
+  const topic = req.query.topic || "";
 
-  res.render("index", { title: "Search Results", posts });
+  let posts;
+  if (query.trim() === "" && topic === "") {
+    posts = await BlogPost.findAll();
+  } else {
+    posts = await BlogPost.findAll({
+      where: {
+        [Sequelize.Op.and]: [
+          {
+            [Sequelize.Op.or]: [
+              { title: { [Op.like]: `%${query}%` } },
+              { topic: { [Op.like]: `%${query}%` } },
+            ],
+          },
+          ...(topic ? [{ topic: topic }] : []),
+        ],
+      },
+    });
+  }
+
+  res.render("index", {
+    title: "Search Results",
+    posts,
+    query,
+    topic,
+    noResults,
+  });
 });
 
 router.get("/create", (req, res) => {
