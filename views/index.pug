@@ -2,7 +2,7 @@ extends layout
 
 block content
   form(action="/search", method="GET")
-    input(type="text", name="query", placeholder="Search by Topic or Title" required)
+    input(type="text", name="query", placeholder="Search by Topic, Title, or Author" required)
     select(name="topic", onchange="this.form.submit()")
       option(value="", disabled, selected) Sort by Topic
       each suggestion in ["General", "Technology", "Science", "Health", "Lifestyle", "Education", "Politics"]
