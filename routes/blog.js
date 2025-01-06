@@ -36,7 +36,6 @@ router.get("/search", async (req, res) => {
     posts,
     query,
     topic,
-    noResults,
   });
 });
 
