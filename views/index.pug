@@ -1,6 +1,10 @@
 extends layout
 
 block content
+  form(action="/search", method="GET")
+    input(type="text", name="query", placeholder="Search by topic or title" required)
+    button(type="submit") Search
+  
   ul
     each post in posts
       li
