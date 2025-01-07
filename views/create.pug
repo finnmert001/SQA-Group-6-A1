@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  form(action="/create", method="POST")
+  form.create-post(action="/create", method="POST")
     input(type="text", name="title", placeholder="Title", required)
     input(type="text", name="author", placeholder="Author", required)
     select(id="dropdown" name="topic" required)
@@ -14,8 +14,8 @@ block content
       option(value="Education") Education
       option(value="Politics") Politics
     textarea(name="content", placeholder="Content", required)
-    button(type="submit") Create
+    button(id="create" type="submit") Create
 
     div(style="margin-top: 20px")
-      button(type="button", onclick="window.history.back()") Back
+      button(id="back" type="button", onclick="window.history.back()") Back
 

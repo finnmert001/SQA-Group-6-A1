@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  form(action=`/edit/${post.id}`, method="POST")
+  form.create-post(action=`/edit/${post.id}`, method="POST")
     input(type="text", name="title", value=post.title, required)
     select(name="topic", required)
       option(value="", disabled) Select a Topic
@@ -13,9 +13,9 @@ block content
       option(value="Education", selected=post.topic === "Education") Education
       option(value="Politics", selected=post.topic === "Politics") Politics
     textarea(name="content", required)= post.content
-    button(type="submit") Save Changes
+    button(id="create" type="submit") Save Changes
 
   form(action=`/delete/${post.id}`, method="POST")
-    button(type="submit", class="danger") Delete Post
+    button(id="delete" type="submit") Delete Post
 
-  button(type="button", onclick="window.history.back()") Back
+  button(id="back" type="button", onclick="window.history.back()") Back

@@ -1,17 +1,25 @@
 extends layout
 
 block content
-  form(action="/search", method="GET")
-    input(type="text", name="query", placeholder="Search by Topic, Title, or Author" required)
-    select(name="topic", onchange="this.form.submit()")
-      option(value="", disabled, selected) Sort by Topic
-      each suggestion in ["General", "Technology", "Science", "Health", "Lifestyle", "Education", "Politics"]
-        option(value=suggestion, selected=topic === suggestion) #{suggestion}
-    button(type="submit") Search
-    button(type="button", onclick="window.location.href='/'") Reset
-  
-  ul
-    each post in posts
-      li
-        a(href=`/post/${post.id}`) #{post.topic}: #{post.title} by #{post.author} (#{post.created_at.toLocaleDateString()})
+  .content-container
+    //- Blog Posts Section (Left)
+    .posts-container
+      if posts.length
+        ul.post-list
+          each post in posts
+            li
+              a(href=`/post/${post.id}`) 
+                | #{post.topic}: #{post.title} by #{post.author} (#{post.created_at.toLocaleDateString()})
+      else
+        p.no-results No posts matching your search criteria or selected topic.
 
+    //- Search and Filter Section (Right)
+    .search-container
+      form(action="/search", method="GET")
+        input(type="text", name="query", placeholder="Search by Topic, Title, or Author", value=query)
+        select(name="topic", onchange="this.form.submit()")
+          option(value="", disabled, selected) Sort by Topic
+          each suggestion in ["General", "Technology", "Science", "Health", "Lifestyle", "Education", "Politics"]
+            option(value=suggestion, selected=topic === suggestion) #{suggestion}
+        button(type="submit") Search
+        button(type="button", onclick="window.location.href='/'") Reset

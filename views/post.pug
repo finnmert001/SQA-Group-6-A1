@@ -19,8 +19,8 @@ block content
   p.post-content= post.content
 
   form(action=`/edit/${post.id}`, method="GET")
-    button(type="submit") Edit Post
+    button(id="create" type="submit") Edit Post
   
   div(style="margin-top: 20px")
-    button(type="button", onclick="window.location.href='/'") Back
+    button(id="back" type="button", onclick="window.location.href='/'") Back
 
