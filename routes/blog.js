@@ -133,8 +133,7 @@ async function validateUserAndSignup(req, res) {
       } else {
           await createNewUser(username, password);
           currentUser = username;
-          const posts = await BlogPost.findAll();
-          res.render("index", { title: "Blog Posts", posts }); // if the checks were successful then create the account, assign the current user to be the username and render the home page
+          res.redirect("/index"); // if the checks were successful then create the account, assign the current user to be the username and render the home page
       }
   } catch(error) {
       console.log(error);
@@ -151,8 +150,7 @@ async function validateUserAndLogin(req, res) {
           res.render('login', { errorMsg: loginDetailsValid }); // if an error message is returned then render the login page with the error message
       } else {
           currentUser = username;
-          const posts = await BlogPost.findAll();
-          res.render("index", { title: "Blog Posts", posts }); // if the checks were successful then assign the current user to be the username and render the home page
+          res.redirect("/index"); // if the checks were successful then assign the current user to be the username and render the home page
       }
   } catch(error) {
       console.log(error);
