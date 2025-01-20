@@ -1,0 +1,45 @@
+extends layout
+
+block content
+    h2 Sign Up
+    form(method='post' action='/signup' id='signup-form')
+        input(type='text' placeholder='Username' name='username' minlength="4" maxlength="20" pattern="^[0-9A-Za-z]{4,20}$" style="display: block" required) 
+        input(type='password' placeholder='Password' id="password-input" name='password' minlength="8" pattern="^(?=.*?[0-9])(?=.*?[A-Za-z]).{8,}$" style="display: block" onkeyup="checkConfirm()" required)
+        p Confirm Password
+        input(type='password' placeholder='Confirm' id="confirm-password-input" name='confirm-password' minlength="8" pattern="^(?=.*?[0-9])(?=.*?[A-Za-z]).{8,}$" style="display: block" onkeyup="validatePassword()" required)
+
+        if errorMsg
+            p(style="color: #d9534f") #{errorMsg}
+
+        button(type='submit' id="signup-btn" style="display: block") Sign Up
+    p Already have an account? 
+    a(href="/login") Login
+    
+    script.
+
+        function validatePassword() {
+            let confirmPasswordInput = document.getElementById('confirm-password-input');
+            let signupBtn = document.getElementById('signup-btn');
+
+            let pass = document.getElementById('password-input').value;
+            let confirmPass = confirmPasswordInput.value;
+
+            if (pass != confirmPass) {
+                confirmPasswordInput.style["border-color"] = "#d9534f";
+                confirmPasswordInput.style["color"] = "#d9534f";
+                signupBtn.disabled = true;
+                signupBtn.style.opacity = (0.4);
+            } else {
+                confirmPasswordInput.style["border-color"] = '#ddd';
+                confirmPasswordInput.style["color"] = 'black';
+                signupBtn.disabled = false;
+                signupBtn.style.opacity = (1);
+            }
+        }
+
+        function checkConfirm() {
+            let confirmPass = document.getElementById('confirm-password-input').value;
+            if (confirmPass != "") {
+                validatePassword();
+            }
+        }
