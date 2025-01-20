@@ -128,6 +128,7 @@ form.create-post {
 
 /* Form Inputs & Select */
 form input[type="text"],
+form input[type="password"],
 form select,
 form textarea {
   width: 100%;
@@ -141,6 +142,7 @@ form textarea {
 
 /* Focus State */
 form input[type="text"]:focus,
+form input[type="password"]:focus,
 form select:focus,
 form textarea:focus {
   outline: none;

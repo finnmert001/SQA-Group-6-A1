@@ -4,7 +4,15 @@ const { BlogPost } = require("../models");
 const { Sequelize, Op } = require("sequelize");
 
 router.get("/", (req, res) => {
-  res.render("login")
+  res.render("login");
+});
+
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
+
+router.get('/login', (req, res) => {
+  res.render('login');
 });
 
 router.get("/index", async (req, res) => {
