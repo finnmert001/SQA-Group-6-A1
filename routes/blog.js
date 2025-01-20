@@ -3,7 +3,11 @@ const router = express.Router();
 const { BlogPost } = require("../models");
 const { Sequelize, Op } = require("sequelize");
 
-router.get("/", async (req, res) => {
+router.get("/", (req, res) => {
+  res.render("login")
+});
+
+router.get("/index", async (req, res) => {
   const posts = await BlogPost.findAll();
   res.render("index", { title: "Blog Posts", posts });
 });
