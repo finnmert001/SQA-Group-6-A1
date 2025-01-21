@@ -25,6 +25,7 @@ const databaseAPI = {
     try {
         const response = await axios.get(`${this.url}logins?q={"username":"${username}"}`, this.config);
         const user = response.data[0];
+        console.log(user);
         return user || null;
     } catch (error) {
         console.error('Error fetching user data:', error);

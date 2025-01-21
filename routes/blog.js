@@ -5,6 +5,8 @@ const { Sequelize, Op } = require("sequelize");
 const bcrypt = require("bcrypt");
 const databaseAPI = require("../config/login datatabse");
 
+let currentUser = require("../app");
+
 router.get("/", (req, res) => {
   res.render("login");
 });
@@ -122,7 +124,11 @@ router.get("/stats", async (req, res) => {
 });
 
 router.get("/profile", (req, res) => {
-  res.render("profile", { title: "My Profile" });
+  res.render("profile", { title: "My Profile", currentUser });
+});
+
+router.get("/edit-profile", (req, res) => {
+  res.render("edit profile", { title: "Edit Profile", currentUser });
 });
 
 // Login functions - JC
@@ -135,8 +141,8 @@ async function validateUserAndSignup(req, res) {
       if (typeof(signupDetailsValid) == 'string') {
           res.render('signup', { errorMsg: signupDetailsValid }); // if an error message is returned then render the signup page with the error message
       } else {
-          await createNewUser(username, password);
-          currentUser = username;
+          let newUser = await createNewUser(username, password);
+          currentUser = newUser;
           res.redirect("/index"); // if the checks were successful then create the account, assign the current user to be the username and render the home page
       }
   } catch(error) {
@@ -153,7 +159,7 @@ async function validateUserAndLogin(req, res) {
       if (typeof(loginDetailsValid) == 'string') {
           res.render('login', { errorMsg: loginDetailsValid }); // if an error message is returned then render the login page with the error message
       } else {
-          currentUser = username;
+          currentUser = loginDetailsValid;
           res.redirect("/index"); // if the checks were successful then assign the current user to be the username and render the home page
       }
   } catch(error) {
@@ -169,6 +175,7 @@ async function createNewUser(username, password) { // adds new user details to t
       password: hashedPassword
   }
   await databaseAPI.write('logins', details);
+  return await databaseAPI.findUserByUsername(username);
 }
 
 // validation functions
@@ -203,7 +210,7 @@ async function validateLogin(username, password) { // will complete all login ch
   if (!await checkPasswordMatch(password, user.password)) {
       return 'The password you entered was incorrect';
   }
-  return true; // return true if all validation passed
+  return user; // return user object if all validation passed
 }
 
 async function validateSignup(username, password, confirmPassword) { // will complete all signup checks sequentially and return an error message if any of them fail

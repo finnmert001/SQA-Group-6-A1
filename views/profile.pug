@@ -2,8 +2,13 @@ extends layout
   
 block content  
   
-  
-  button(id="create" type="submit") Edit Profile  
+  p Username: #{currentUser["username"]}
+  p Email Address: #{currentUser["email"]||""}
+  p Full Name: #{currentUser["full_name"]||""}
+  p Date of Birth #{currentUser["date_of_birth"]||""}
+
+  a(href="/edit-profile")
+    button(id="create" type="submit") Edit Profile  
   
   div(style="margin-top: 20px")  
     button(id="back" type="button", onclick="window.history.back()") Back

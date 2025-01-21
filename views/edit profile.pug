@@ -1,0 +1,18 @@
+extends layout  
+  
+block content  
+  
+  form(method='post' action='/edit-profile' id='edit-profile-form')
+    p(style="display: block") Username
+      input(type='text' name='username' style="display: inline-block" value= currentUser["username"] required) 
+    p(style="display: block") Email Address
+      input(type='text' name='email' style="display: inline-block" value= currentUser["email"]||"") 
+    p(style="display: block") Full Name
+      input(type='text' name='full_name' style="display: inline-block" value= currentUser["full_name"]||"") 
+    p(style="display: block") Date of Birth
+      input(type='text' name='date_of_birth' style="display: inline-block" value= currentUser["date_of_birth"]||"") 
+
+    button(id="create" type="submit" style="display: block") Save Changes
+
+  div(style="margin-top: 20px")  
+    button(id="back" type="button", onclick="window.history.back()") Back
