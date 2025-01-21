@@ -121,6 +121,10 @@ router.get("/stats", async (req, res) => {
   res.render("stats", { title: "Post Statistics", ...stats });
 });
 
+router.get("/profile", (req, res) => {
+  res.render("profile", { title: "My Profile" });
+});
+
 // Login functions - JC
 
 async function validateUserAndSignup(req, res) {
@@ -197,7 +201,7 @@ async function validateLogin(username, password) { // will complete all login ch
       return 'An account with this username does not exist';
   }
   if (!await checkPasswordMatch(password, user.password)) {
-      return 'The pasword you entered was incorrect';
+      return 'The password you entered was incorrect';
   }
   return true; // return true if all validation passed
 }
