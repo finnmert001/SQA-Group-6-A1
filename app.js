@@ -6,6 +6,8 @@ const blogRoutes = require("./routes/blog");
 const app = express();
 const port = process.env.PORT || 3000;
 
+let currentUser;
+
 // View engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
