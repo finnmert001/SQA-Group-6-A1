@@ -1,4 +1,10 @@
-extends layout
+head
+    title= title
+    link(rel="stylesheet", href="/css/styles.css")
+body
+    header
+      div.header-content
+        h1 Blog with Express
 
 block content
     h2 Login
@@ -9,6 +15,6 @@ block content
         if errorMsg
             p(style="color: #d9534f") #{errorMsg}
 
-        button(type='submit' style="display: block") Login
+        button(id="create" type='submit' style="display: block") Login
     p Don't have an account? 
     a(href="/signup") Sign up
