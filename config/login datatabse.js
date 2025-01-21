@@ -4,7 +4,7 @@ dotenv.config();
 
 //new database api object
 const databaseAPI = {
-  url: 'https://reviews-8961.restdb.io/rest/',
+  url: 'https://blogposts-7a28.restdb.io/rest/',
   config: {
     headers: {
       'Content-Type': 'application/json',
