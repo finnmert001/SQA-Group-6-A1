@@ -131,7 +131,31 @@ router.get("/edit-profile", (req, res) => {
   res.render("edit profile", { title: "Edit Profile", currentUser });
 });
 
+router.post("/edit-profile/:id", updateUserDetails);
+
 // Login functions - JC
+
+async function updateUserDetails(req, res) {
+  let responseJSON = req.body;
+  let entryId = req.params.id;
+
+  let newJSON = {
+    username: responseJSON["username"],
+    email: responseJSON["email"],
+    full_name: responseJSON["full_name"],
+    date_of_birth: new Date(responseJSON["date_of_birth"])
+  }
+
+  try {
+    let updateResponseData = await databaseAPI.update('logins', entryId, newJSON);
+    let updateUsername = updateResponseData["username"];
+    currentUser = await databaseAPI.findUserByUsername(updateUsername);
+    res.render("profile", { currentUser });
+  } catch (error) {
+    console.log(error);
+    res.render("edit profile", { errorMsg: "An error occurred when trying to update your details", currentUser });
+  }
+}
 
 async function validateUserAndSignup(req, res) {
   let responseJSON = req.body;
@@ -172,7 +196,10 @@ async function createNewUser(username, password) { // adds new user details to t
   let hashedPassword = await bcrypt.hash(password, 10);
   let details = {
       username: username,
-      password: hashedPassword
+      password: hashedPassword,
+      email: "",
+      full_name: "",
+      date_of_birth: new Date()
   }
   await databaseAPI.write('logins', details);
   return await databaseAPI.findUserByUsername(username);

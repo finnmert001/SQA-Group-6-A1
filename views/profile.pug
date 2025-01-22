@@ -5,10 +5,11 @@ block content
   p Username: #{currentUser["username"]}
   p Email Address: #{currentUser["email"]||""}
   p Full Name: #{currentUser["full_name"]||""}
-  p Date of Birth #{currentUser["date_of_birth"]||""}
+  p Date of Birth: #{currentUser["date_of_birth"] ? new Date(currentUser["date_of_birth"]).toLocaleString("en-GB").split(",")[0] : ""}
 
   a(href="/edit-profile")
     button(id="create" type="submit") Edit Profile  
   
   div(style="margin-top: 20px")  
-    button(id="back" type="button", onclick="window.history.back()") Back
+    a(href="/index")
+      button(id="back" type="button") Back
