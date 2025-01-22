@@ -4,7 +4,7 @@ block content
   
   form(method='post' action='/edit-profile/' + currentUser._id id='edit-profile-form')
     p(style="display: block") Username
-      input(type='text' name='username' style="display: inline-block" value= currentUser["username"] required) 
+      input(type='text' name='username' style="display: inline-block" pattern="^[0-9A-Za-z]{4,20}$" value= currentUser["username"] required) 
     p(style="display: block") Email Address
       input(type='text' name='email' style="display: inline-block" value= currentUser["email"]||"") 
     p(style="display: block") Full Name
