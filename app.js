@@ -6,8 +6,6 @@ const blogRoutes = require("./routes/blog");
 const app = express();
 const port = process.env.PORT || 3000;
 
-let currentUser;
-
 // View engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -30,5 +28,3 @@ sequelize.sync().then(() => {
     console.log(`Server is running on http://localhost:${port}`);
   });
 });
-
-module.exports = currentUser;
