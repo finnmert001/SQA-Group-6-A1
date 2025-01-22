@@ -1,10 +1,15 @@
 head
     title= title
     link(rel="stylesheet", href="/css/styles.css")
+    script(src="/js/theme.js")
 body
     header
       div.header-content
         h1 Blog with Express
+        nav.navbar
+          ul
+            li
+              button(class="button-style" onclick="toggleTheme()") Toggle Dark Mode
 
 block content
     h2 Sign Up
