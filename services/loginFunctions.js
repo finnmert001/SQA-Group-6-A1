@@ -14,18 +14,16 @@ async function updateUserDetails(req, res) {
       date_of_birth: new Date(responseJSON["date_of_birth"])
     }
 
-    // Server-side validation for full_name
     const fullNamePattern = /^[A-Za-z]+ [A-Za-z]+$/;
     if (!fullNamePattern.test(newJSON.full_name)) {
       const currentUser = getCurrentUser();
       return res.render("edit profile", { errorMsg: "Please enter a valid full name with a space between forename and surname.", currentUser });
     }
 
-    // Server-side validation for email
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(newJSON.email)) {
       const currentUser = getCurrentUser();
-      return res.render("edit profile", { errorMsg: "Please enter a valid email address.", currentUser });
+      return res.render("edit profile", { errorMsg: "Please enter a valid email address. It must include '@' and a valid domain.", currentUser });
     }
 
     try {
