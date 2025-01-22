@@ -1,342 +1,76 @@
-### 1. Initialize the Project
+## Group 6
 
-First, create a new directory for your project and initialize it with npm:
+### 1. Feature Implementation
 
-```sh
-mkdir express-pug-sqlite-blog
-cd express-pug-sqlite-blog
-npm init -y
-```
+In addition to the core CRUD operations (Create, Read, Update, Delete) for managing blog posts, our team implemented four additional features to further enhance the functionality and overall user experience of the web application. These features are as follows:
 
-### 2. Install Dependencies
+#### Feature 1: User Authentication
 
-Install the necessary dependencies:
+- Implemented user registration and login functionality, enabling users to securely create accounts and access the platform.
+- Utilised bcrypt for password hashing, ensuring the secure storage of user passwords in the REST database.
+- Integrated session management to maintain user login states across pages, ensuring that unauthenticated users are restricted from accessing protected content. ???? CHECK ????
+- Developed a logout feature, allowing users to securely terminate their sessions.
+- Implemented comprehensive error handling for both login and registration forms (e.g., invalid credentials, duplicate accounts).
+- Provided feedback messages for failed login and registration attempts.
 
-```sh
-npm install express pug
-npm install --save-dev nodemon
-```
+#### Feature 2: User Profiles
 
-### 3. Set Up the Basic Express Server
+- Enabled users to view and edit their profile information, including:
+  - Username
+  - Email address
+  - Full name
+  - Date of birth
+- Incorporated input validation to maintain data integrity:
+  - Ensured email addresses follow a valid format (e.g., must contain '@' and end with '.com' or '.co.uk').
+  - Required full names to include a space between the forename and surname for proper formatting.
+- Delivered detailed feedback messages for invalid inputs, offering clear guidance to help users correct their errors (e.g., "Please enter a valid email address. It must contain '@' and a valid domain.").
+- Ensured that profile updates are instantly reflected and securely saved in the database for real-time changes.
 
-Create the `app.js` file to set up the Express server with Pug as the view engine:
+#### Feature 3: Blog Post Management
 
-```js
-const express = require('express');
-const path = require('path');
-const app = express();
-const port = 3000;
+- Implemented a robust search feature that allows users to find blog posts by title or author, enhancing the ability to quickly locate specific content.
+- Introduced a sorting functionality by topic, which streamlines the organisation of posts and improves browsing efficiency.
+  - Enabled users to assign topics to posts during creation, ensuring better categorisation and discoverability.
+- Facilitated the ability for users to search and sort simultaneously, allowing for more precise and tailored search results.
+- Added a reset feature to clear all active search and sort parameters, returning the home page to its default view with all blog posts displayed.
 
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
+#### Feature 4: Accessibility Improvements (Dark Mode)
 
-app.get('/', (req, res) => {
-    res.render('index', { title: 'Home' });
-});
+- Implemented a dark mode feature to improve accessibility and provide users the option to enable or disable it based on their preference.
+- Integrated the dark mode toggle on all key pages, including the login and registration pages, ensuring users can select their preferred mode even before logging in.
+- Stored user preferences (light/dark mode) in the database, enabling a personalised experience that persists across sessions.
+- Ensured compliance with WCAG (Web Content Accessibility Guidelines) for color contrast and readability, making the application inclusive for all users, including those with visual impairments.
 
-app.get('/create', (req, res) => {
-    res.render('create', { title: 'Create Post' });
-});
+### 2. Testing
 
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
-```
+NEED TO FINISH TESTING THEN WILL WRITE ABOUT IT
 
-### 4. Create Initial Routes and Views
+### 3. Security Enhancements
 
-In this step, we will move the route definitions from `app.js` to a separate `blog.js` file for better organization.
+In order to secure user data and protect the application from common vulnerabilities, we implemented several key security measures throughout the project:
 
-Create the `blog.js` file to define the initial routes for the index and create pages:
+#### Password Hashing
+We utilised bcrypt for password hashing, ensuring that user passwords are stored securely and are never kept in plaintext. Hashing passwords before storing them in the database significantly reduces the risk of exposure in the event of a data breach. The use of bcrypt also ensures that passwords are stored with a salt ????????? CHECK ??????????? and a configurable number of hashing rounds, making them computationally expensive to crack.
 
-```js
-const express = require('express');
-const router = express.Router();
+#### Account Uniqueness
+To prevent duplicate or unauthorised accounts, we ensured that users cannot register with an existing username. This prevents conflicts and potential security issues such as impersonation. During both the registration and login processes, the system checks for uniqueness, ensuring that no two accounts share the same username.
 
-router.get('/', (req, res) => {
-    res.render('index', { title: 'Home' });
-});
+#### CSRF Protection
+We implemented CSRF (Cross-Site Request Forgery) protection using CSRF tokens in our JavaScript-based application. CSRF tokens are generated for each session and included in form submissions, ensuring that requests to the server are coming from a trusted source and not a malicious third party attempting to perform unauthorised actions on behalf of an authenticated user. ???????? CHECK ?????????
 
-router.get('/create', (req, res) => {
-    res.render('create', { title: 'Create Post' });
-});
+#### Input Validation & Sanitisation
+Input validation and sanitisation were applied to all user-generated data to protect the application from common vulnerabilities, including SQL injection and Cross-Site Scripting (XSS) attacks. Specifically, we validated the following fields:
 
-module.exports = router;
-```
-
-Update `app.js` to use the new routes:
-
-```js
-const blogRouter = require('./routes/blog');
-app.use('/', blogRouter);
-
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
-```
+- **Username:** Checked for proper formatting (e.g., no special characters that could be used for injection attacks).
+- **Password:** Ensured passwords meet a certain level of complexity (e.g., length and character variety).
+- **Email address:** Validated email structure to prevent malicious data input and ensure proper formatting.
+- **Full name:** Ensured that names follow a basic structure, allowing only alphabetic characters and a space between the forename and surname.
 
-Create the following Pug templates in the `views` directory:
-
-`layout.pug`
+By validating and sanitising these fields, we minimised the risk of injection attacks and ensured that user input is handled securely.
 
-```pug
-doctype html
-html
-    head
-        title= title
-    body
-        header
-            nav
-                ul
-                    li
-                        a(href="/") Home
-                    li
-                        a(href="/create") Create Post
-        main
-            h1= title
-            block content
-```
+#### Consistent Application of Security Measures
+All security measures, from password hashing to input validation, were consistently applied across the application. We ensured that these best practices were not limited to a specific part of the platform, but were uniformly implemented wherever user input was processed or stored, thereby reducing vulnerabilities and improving overall application security.
 
-`index.pug`
+### 4. Code Quality and Refactoring
 
-```pug
-extends layout
-
-block content
-    ul
-        each post in posts
-            li
-                a(href=`/post/${post.id}`) #{post.title} by #{post.author} (#{post.created_at.toLocaleDateString()})
-```
-
-`create.pug`
-
-```pug
-extends layout
-
-block content
-    form(action="/create", method="POST")
-        input(type="text", name="title", placeholder="Title", required)
-        input(type="text", name="author", placeholder="Author", required)
-        textarea(name="content", placeholder="Content", required)
-        button(type="submit") Create
-```
-
-### 5. Add Sequelize for Database Handling
-
-Install Sequelize and SQLite dependencies:
-
-```sh
-npm install sqlite3 sequelize
-```
-
-Create the `database.js` file to configure the SQLite database connection using Sequelize:
-
-```js
-const { Sequelize } = require('sequelize');
-const path = require('path');
-
-const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: path.join(__dirname, '..', 'database.sqlite')
-});
-
-module.exports = sequelize;
-```
-
-Create the `index.js` file to define the BlogPost model using Sequelize:
-
-```js
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('./database');
-
-const BlogPost = sequelize.define('BlogPost', {
-    title: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    author: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    content: {
-        type: DataTypes.TEXT,
-        allowNull: false
-    },
-    created_at: {
-        type: DataTypes.DATE,
-        defaultValue: Sequelize.NOW
-    }
-});
-
-module.exports = { sequelize, BlogPost };
-```
-
-Update `app.js` to include Sequelize:
-
-```js
-const { sequelize } = require('./models');
-
-sequelize.sync().then(() => {
-    app.listen(port, () => {
-        console.log(`Server is running on http://localhost:${port}`);
-    });
-});
-```
-
-### 6. Update Routes to Handle Form Submissions and Creation
-
-Update `blog.js` to handle form submissions and create blog posts:
-
-```js
-const { BlogPost } = require('../models');
-
-router.post('/create', async (req, res) => {
-    await BlogPost.create(req.body);
-    res.redirect('/');
-});
-
-module.exports = router;
-```
-
-### 7. Add Remaining Routes and Views
-
-Update `blog.js` to include routes for viewing individual posts, editing, and statistics:
-
-```js
-router.get('/post/:id', async (req, res) => {
-    const post = await BlogPost.findByPk(req.params.id);
-    res.render('post', { title: post.title, post });
-});
-
-router.get('/edit/:id', async (req, res) => {
-    const post = await BlogPost.findByPk(req.params.id);
-    res.render('edit', { title: `Edit ${post.title}`, post });
-});
-
-router.post('/edit/:id', async (req, res) => {
-    const post = await BlogPost.findByPk(req.params.id);
-    await post.update(req.body);
-    res.redirect(`/post/${post.id}`);
-});
-
-router.post('/delete/:id', async (req, res) => {
-    const post = await BlogPost.findByPk(req.params.id);
-    await post.destroy();
-    res.redirect('/');
-});
-
-router.get('/stats', async (req, res) => {
-    const posts = await BlogPost.findAll();
-    const lengths = posts.map(post => post.content.length);
-    const stats = {
-        average_length: lengths.reduce((a, b) => a + b, 0) / lengths.length,
-        median_length: lengths.sort((a, b) => a - b)[Math.floor(lengths.length / 2)],
-        max_length: Math.max(...lengths),
-        min_length: Math.min(...lengths),
-        total_length: lengths.reduce((a, b) => a + b, 0)
-    };
-    res.render('stats', { title: 'Post Statistics', ...stats });
-});
-
-module.exports = router;
-```
-
-Create the following additional Pug templates in the `views` directory:
-
-`post.pug`
-
-```pug
-extends layout
-
-block content
-    p.post-meta By #{post.author} (Posted on #{post.created_at.toLocaleString()})
-    p.post-content= post.content
-    a(href=`/edit/${post.id}`) Edit Post
-```
-
-`edit.pug`
-
-```pug
-extends layout
-
-block content
-    form(action=`/edit/${post.id}`, method="POST")
-        input(type="text", name="title", value=post.title, required)
-        textarea(name="content", required)= post.content
-        button(type="submit") Save Changes
-
-    form(action=`/delete/${post.id}`, method="POST")
-        button(type="submit", class="danger") Delete Post
-```
-
-`stats.pug`
-
-```pug
-extends layout
-
-block content
-    p Average: #{average_length.toFixed(2)} characters
-    p Median: #{median_length.toFixed(2)} characters
-    p Maximum: #{max_length.toFixed(2)} characters
-    p Minimum: #{min_length.toFixed(2)} characters
-    br
-    p Total length of all posts: #{total_length.toFixed(2)} characters
-```
-
-### 8. Add Styles
-
-Create the `styles.css` file to add some basic styles:
-
-```css
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f4f4;
-}
-
-header {
-    background: #333;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 1rem;
-}
-
-a {
-    color: #333;
-    text-decoration: none;
-}
-
-button {
-    background: #333;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    cursor: pointer;
-}
-
-button.danger {
-    background: #ff0000;
-}
-```
-
-### 9. Run the Application
-
-Start the application using the following command:
-
-```sh
-npm start
-```
-
-The application will be accessible at [http://localhost:3000](http://localhost:3000).
+### 5. CI/CD and Git Practices
