@@ -2,11 +2,11 @@
 
 ### Table of Contents
 ---
-1. [Feature Implementation](#feature-implementation)
-2. [Testing](#testing)
-3. [Security Enhancements](#security-enhancements)
-4. [Code Quality and Refactoring](#code-quality-and-refactoring)
-5. [CI/CD and Git Practices](#cicd-and-git-practices)
+1. [Feature Implementation](#1-feature-implementation)
+2. [Testing](#2-testing)
+3. [Security Enhancements](#3-security-enhancements)
+4. [Code Quality and Refactoring](#4-code-quality-and-refactoring)
+5. [CI/CD and Git Practices](#5-cicd-and-git-practices)
 
 ## 1. Feature Implementation
 
