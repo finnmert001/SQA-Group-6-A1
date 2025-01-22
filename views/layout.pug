@@ -3,6 +3,8 @@ html(lang="en")
   head
     title= title
     link(rel="stylesheet", href="/css/styles.css")
+    // Including the theme.js script
+    script(src="/js/theme.js")
   body
     header
       div.header-content
@@ -17,6 +19,8 @@ html(lang="en")
               a(href="/stats") Stats
             li
               a(href="/profile") My Profile
+            li
+              button(onclick="toggleTheme()") Toggle Dark Mode
     main
       h1= title
       block content
