@@ -1,8 +1,7 @@
-const databaseAPI = require("../config/login database");
+const databaseAPI = require("../config/loginDatabase");
 const bcrypt = require("bcrypt");
 
 const { setCurrentUser, getCurrentUser } = require("./currentUser"); 
-
 
 async function updateUserDetails(req, res) {
     let responseJSON = req.body;
@@ -14,7 +13,21 @@ async function updateUserDetails(req, res) {
       full_name: responseJSON["full_name"],
       date_of_birth: new Date(responseJSON["date_of_birth"])
     }
-  
+
+    // Server-side validation for full_name
+    const fullNamePattern = /^[A-Za-z]+ [A-Za-z]+$/;
+    if (!fullNamePattern.test(newJSON.full_name)) {
+      const currentUser = getCurrentUser();
+      return res.render("edit profile", { errorMsg: "Please enter a valid full name with a space between forename and surname.", currentUser });
+    }
+
+    // Server-side validation for email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(newJSON.email)) {
+      const currentUser = getCurrentUser();
+      return res.render("edit profile", { errorMsg: "Please enter a valid email address.", currentUser });
+    }
+
     try {
       let updateResponseData = await databaseAPI.update('logins', entryId, newJSON);
       let updateUsername = updateResponseData["username"];
@@ -24,6 +37,7 @@ async function updateUserDetails(req, res) {
       res.render("profile", { currentUser });
     } catch (error) {
       console.log(error);
+      const currentUser = getCurrentUser();
       res.render("edit profile", { errorMsg: "An error occurred when trying to update your details", currentUser });
     }
   }
