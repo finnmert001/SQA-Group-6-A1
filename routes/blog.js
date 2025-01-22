@@ -3,7 +3,7 @@ const router = express.Router();
 const { BlogPost } = require("../models");
 const { Sequelize, Op } = require("sequelize");
 const bcrypt = require("bcrypt");
-const databaseAPI = require("../config/login database");
+const databaseAPI = require("../config/loginDatabase");
 
 let currentUser = require("../app");
 
@@ -252,4 +252,15 @@ async function validateSignup(username, password, confirmPassword) { // will com
   return true; // return true if all validation passed
 }
 
-module.exports = router;
+module.exports = {
+  router,
+  validateUserAndSignup,
+  validateUserAndLogin,
+  createNewUser,
+  validateLoginDetailsFormat,
+  presenceCheckLogin,
+  userExists,
+  checkPasswordMatch,
+  validateLogin,
+  validateSignup
+};

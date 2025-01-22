@@ -1,6 +1,6 @@
 const axios = require('axios');
 const MockAdapter = require('axios-mock-adapter');
-const databaseAPI = require('../../config/login database');
+const databaseAPI = require('../../config/loginDatabase');
 
 describe('Database API', () => {
   let mock;
