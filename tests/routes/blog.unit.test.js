@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const databaseAPI = require('../../config/loginDatabase');
+const databaseAPI = require('../../config/login database');
 const {
   createNewUser,
   validateLoginDetailsFormat,

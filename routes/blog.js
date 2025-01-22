@@ -3,7 +3,7 @@ const router = express.Router();
 const { BlogPost } = require("../models");
 const { Sequelize, Op } = require("sequelize");
 const bcrypt = require("bcrypt");
-const databaseAPI = require("../config/loginDatabase");
+const databaseAPI = require("../config/login database");
 
 router.get("/", (req, res) => {
   res.render("login");
