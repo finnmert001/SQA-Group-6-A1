@@ -198,8 +198,7 @@ async function createNewUser(username, password) { // adds new user details to t
       username: username,
       password: hashedPassword,
       email: "",
-      full_name: "",
-      date_of_birth: new Date()
+      full_name: ""
   }
   await databaseAPI.write('logins', details);
   return await databaseAPI.findUserByUsername(username);
