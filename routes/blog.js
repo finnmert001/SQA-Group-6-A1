@@ -146,6 +146,16 @@ async function updateUserDetails(req, res) {
     date_of_birth: new Date(responseJSON["date_of_birth"])
   }
 
+  const fullNamePattern = /^[A-Za-z]+ [A-Za-z]+$/;
+  if (!fullNamePattern.test(newJSON.full_name)) {
+    return res.render("edit profile", { errorMsg: "Please enter a valid full name with a space between forename and surname.", currentUser });
+  }
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(newJSON.email)) {
+    return res.render("edit profile", { errorMsg: "Please enter a valid email address.", currentUser });
+  }
+
   try {
     let updateResponseData = await databaseAPI.update('logins', entryId, newJSON);
     let updateUsername = updateResponseData["username"];
@@ -252,15 +262,4 @@ async function validateSignup(username, password, confirmPassword) { // will com
   return true; // return true if all validation passed
 }
 
-module.exports = {
-  router,
-  validateUserAndSignup,
-  validateUserAndLogin,
-  createNewUser,
-  validateLoginDetailsFormat,
-  presenceCheckLogin,
-  userExists,
-  checkPasswordMatch,
-  validateLogin,
-  validateSignup
-};
+module.exports = router;
