@@ -1,4 +1,4 @@
-const databaseAPI = require("../config/login database");
+const databaseAPI = require("../config/loginDatabase");
 const bcrypt = require("bcrypt");
 
 const { setCurrentUser, getCurrentUser } = require("./currentUser"); 
