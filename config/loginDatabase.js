@@ -16,6 +16,7 @@ const databaseAPI = {
         const endpoint = this.url + collection;
         const postResponse = await axios.post(endpoint, payload, this.config);
         console.log(`${collection} collection updated: `, postResponse.data);
+        return postResponse;
     } catch (error) {
         console.error('Error updating database:', error);
         throw error; 

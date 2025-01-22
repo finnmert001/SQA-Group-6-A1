@@ -3,7 +3,7 @@ const router = express.Router();
 const { BlogPost } = require("../models");
 const { Sequelize, Op } = require("sequelize");
 const bcrypt = require("bcrypt");
-const databaseAPI = require("../config/login datatabse");
+const databaseAPI = require("../config/loginDatabase");
 
 router.get("/", (req, res) => {
   res.render("login");
@@ -65,7 +65,7 @@ router.get("/create", (req, res) => {
 
 router.post("/create", async (req, res) => {
   await BlogPost.create(req.body);
-  res.redirect("/");
+  res.redirect("/index");
 });
 
 router.get("/post/:id", async (req, res) => {
@@ -100,7 +100,7 @@ router.post("/delete/:id", async (req, res) => {
   const post = await BlogPost.findByPk(req.params.id);
   if (post) {
     await post.destroy();
-    res.redirect("/");
+    res.redirect("/index");
   } else {
     res.status(404).send("Post not found");
   }
@@ -175,7 +175,9 @@ async function createNewUser(username, password) { // adds new user details to t
 function validateLoginDetailsFormat(username, password, confirmPassword) { // checks inputs match the required format
   let usernameRegEx = /^[0-9A-Za-z]{4,20}$/;
   let passwordRegEx = /^(?=.*?[0-9])(?=.*?[A-Za-z]).{8,}$/;
-  return username.toString().match(usernameRegEx) && password.toString().match(passwordRegEx) && password == confirmPassword;
+  return username.toString().match(usernameRegEx) !== null && 
+  password.toString().match(passwordRegEx) !== null && 
+  password === confirmPassword;
 }
 
 function presenceCheckLogin(username, password) { // checks that no fields were left blank
