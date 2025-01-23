@@ -1,11 +1,11 @@
-let currentUser;  
+let currentUser;
 
-function setCurrentUser(user) {  
-  currentUser = user;  
-}  
+function setCurrentUser(user) {
+  currentUser = user;
+}
 
-function getCurrentUser() {  
-  return currentUser;  
-}  
+function getCurrentUser() {
+  return currentUser;
+}
 
-module.exports = { setCurrentUser, getCurrentUser };  
+module.exports = { setCurrentUser, getCurrentUser };

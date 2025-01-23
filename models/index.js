@@ -7,11 +7,13 @@ const BlogPost = sequelize.define(
     title: {
       type: DataTypes.STRING(100),
       allowNull: false,
+      index: true,
     },
     topic: {
       type: DataTypes.STRING(50),
       allowNull: false,
       defaultValue: "General",
+      index: true,
     },
     content: {
       type: DataTypes.TEXT,
@@ -20,12 +22,24 @@ const BlogPost = sequelize.define(
     author: {
       type: DataTypes.STRING(100),
       allowNull: false,
+      index: true,
     },
   },
   {
     timestamps: true,
     createdAt: "created_at",
     updatedAt: false,
+    indexes: [
+      {
+        fields: ["title"],
+      },
+      {
+        fields: ["topic"],
+      },
+      {
+        fields: ["author"],
+      },
+    ],
   }
 );
 
