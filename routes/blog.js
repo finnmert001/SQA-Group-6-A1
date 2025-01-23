@@ -2,24 +2,28 @@ const express = require("express");
 const router = express.Router();
 const { BlogPost } = require("../models");
 const { Sequelize, Op } = require("sequelize");
-const { validateUserAndSignup, validateUserAndLogin, updateUserDetails } = require("../services/loginFunctions");
+const {
+  validateUserAndSignup,
+  validateUserAndLogin,
+  updateUserDetails,
+} = require("../services/loginFunctions");
 
-const { setCurrentUser, getCurrentUser } = require("../services/currentUser"); 
+const { setCurrentUser, getCurrentUser } = require("../services/currentUser");
 
 router.get("/", (req, res) => {
   res.render("login");
 });
 
-router.get('/signup', (req, res) => {
-  res.render('signup');
+router.get("/signup", (req, res) => {
+  res.render("signup");
 });
 
-router.get('/login', (req, res) => {
-  res.render('login');
+router.get("/login", (req, res) => {
+  res.render("login");
 });
 
-router.post('/signup', validateUserAndSignup);
-router.post('/login', validateUserAndLogin);
+router.post("/signup", validateUserAndSignup);
+router.post("/login", validateUserAndLogin);
 
 router.get("/index", async (req, res) => {
   const posts = await BlogPost.findAll();

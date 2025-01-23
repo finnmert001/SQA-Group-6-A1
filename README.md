@@ -156,7 +156,7 @@ By focusing on code quality and refactoring, we aimed to improve readability, re
 
 ---
 
-### 3. Error Handling and Robustness (Optional) NEED TO DO !!!!!!!!!!!
+### 3. Error Handling and Robustness
 
 #### Example 1: Improving Error Handling with Try-Catch Blocks and User-Friendly Messages
 
@@ -169,53 +169,39 @@ By focusing on code quality and refactoring, we aimed to improve readability, re
 <details>
   <summary>After Refactoring: errorHandling.js</summary>
   
-  ![After Refactoring: errorHandling.js](/images/afterErrorHandling.png)
+  ![After Refactoring: errorHandling.js](/images/beforeInputValidation.png)
 </details>
 
 #### Example 2: Adding Input Validation and Handling Edge Cases for Reliable Performance
 
 <details>
-  <summary>Before Refactoring: inputValidation.js</summary>
+  <summary>Before Refactoring: loginFunctions.js</summary>
   
-  ![Before Refactoring: inputValidation.js](/images/beforeInputValidation.png)
+  ![Before Refactoring: loginFunctions.js](/images/beforeInputValidation.png)
 </details>
 
 <details>
-  <summary>After Refactoring: inputValidation.js</summary>
+  <summary>After Refactoring: loginFunctions.js</summary>
   
-  ![After Refactoring: inputValidation.js](/images/afterInputValidation.png)
+  ![After Refactoring: loginFunctions.js](/images/afterInputValidation.png)
 </details>
 
 ---
 
-### 4. Performance Optimisation (Optional) NEED TO DO !!!!!!!!!!!
+### 4. Performance Optimisation
 
-#### Example 1: Refactoring to Speed Up Database Queries and Reduce Memory Usage
+#### Example: Refactoring to Speed Up Database Queries and Reduce Memory Usage
 
 <details>
-  <summary>Before Refactoring: databaseQuery.js</summary>
+  <summary>Before Refactoring: index.js</summary>
   
-  ![Before Refactoring: databaseQuery.js](/images/beforeDatabaseQuery.png)
+  ![Before Refactoring: index.js](/images/beforeDatabaseQuery.png)
 </details>
 
 <details>
-  <summary>After Refactoring: databaseQuery.js</summary>
+  <summary>After Refactoring: index.js</summary>
   
-  ![After Refactoring: databaseQuery.js](/images/afterDatabaseQuery.png)
-</details>
-
-#### Example 2: Optimising Algorithms and Loops for Faster Execution Time
-
-<details>
-  <summary>Before Refactoring: slowAlgorithm.js</summary>
-  
-  ![Before Refactoring: slowAlgorithm.js](/images/beforeSlowAlgorithm.png)
-</details>
-
-<details>
-  <summary>After Refactoring: slowAlgorithm.js</summary>
-  
-  ![After Refactoring: slowAlgorithm.js](/images/afterSlowAlgorithm.png)
+  ![After Refactoring: index.js](/images/afterDatabaseQuery.png)
 </details>
 
 ## 5. CI/CD and Git Practices
