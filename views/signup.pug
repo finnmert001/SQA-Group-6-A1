@@ -17,7 +17,7 @@ block content
         input(type='text' placeholder='Username' name='username' minlength="4" maxlength="20" pattern="^[0-9A-Za-z]{4,20}$" style="display: block" required) 
         input(type='password' placeholder='Password' id="password-input" name='password' minlength="8" pattern="^(?=.*?[0-9])(?=.*?[A-Za-z]).{8,}$" style="display: block" onkeyup="checkConfirm()" required)
         p Confirm Password
-        input(type='password' placeholder='Confirm' id="confirm-password-input" name='confirm-password' minlength="8" pattern="^(?=.*?[0-9])(?=.*?[A-Za-z]).{8,}$" style="display: block" onkeyup="validatePassword()" required)
+        input(type='password' placeholder='Confirm' id="confirm-password-input" name='confirmPassword' minlength="8" pattern="^(?=.*?[0-9])(?=.*?[A-Za-z]).{8,}$" style="display: block" onkeyup="validatePassword()" required)
 
         if errorMsg
             p(style="color: #d9534f") #{errorMsg}
