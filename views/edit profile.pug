@@ -8,9 +8,9 @@ block content
     p(style="display: block") Email Address
       input(type='text' name='email' style="display: inline-block" value= currentUser["email"]||"") 
     p(style="display: block") Full Name
-      input(type='text' name='full_name' style="display: inline-block" value= currentUser["full_name"]||"") 
+      input(type='text' name='full_name' style="display: inline-block" value= currentUser["fullName"]||"") 
     p(style="display: block") Date of Birth
-      input(type='date' name='date_of_birth' style="display: block" value= currentUser["date_of_birth"] ? currentUser["date_of_birth"].split("T")[0] : "") 
+      input(type='date' name='date_of_birth' style="display: block" value= currentUser["dateOfBirth"] ? currentUser["dateOfBirth"].split("T")[0] : "") 
     
     if errorMsg
       p(style="color: #d9534f") #{errorMsg}

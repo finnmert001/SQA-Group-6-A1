@@ -4,8 +4,8 @@ block content
   
   p Username: #{currentUser["username"]}
   p Email Address: #{currentUser["email"]||""}
-  p Full Name: #{currentUser["full_name"]||""}
-  p Date of Birth: #{currentUser["date_of_birth"] ? new Date(currentUser["date_of_birth"]).toLocaleString("en-GB").split(",")[0] : ""}
+  p Full Name: #{currentUser["fullName"]||""}
+  p Date of Birth: #{currentUser["dateOfBirth"] ? new Date(currentUser["dateOfBirth"]).toLocaleString("en-GB").split(",")[0] : ""}
 
   a(href="/edit-profile")
     button(id="create" type="submit") Edit Profile  

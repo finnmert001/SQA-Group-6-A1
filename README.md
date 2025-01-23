@@ -1,7 +1,9 @@
 # Software Quality Assurance - Group 6
 
 ### Table of Contents
+
 ---
+
 1. [Feature Implementation](#1-feature-implementation)
 2. [Testing](#2-testing)
 3. [Security Enhancements](#3-security-enhancements)
@@ -58,15 +60,19 @@ NEED TO FINISH TESTING THEN WILL WRITE ABOUT IT
 In order to secure user data and protect the application from common vulnerabilities, we implemented several key security measures throughout the project:
 
 ### Password Hashing
+
 We utilised bcrypt for password hashing, ensuring that user passwords are stored securely and are never kept in plaintext. Hashing passwords before storing them in the database significantly reduces the risk of exposure in the event of a data breach. The use of bcrypt also ensures that passwords are stored with a salt ????????? CHECK ??????????? and a configurable number of hashing rounds, making them computationally expensive to crack.
 
 ### Account Uniqueness
+
 To prevent duplicate or unauthorised accounts, we ensured that users cannot register with an existing username. This prevents conflicts and potential security issues such as impersonation. During both the registration and login processes, the system checks for uniqueness, ensuring that no two accounts share the same username.
 
 ### CSRF Protection
+
 We implemented CSRF (Cross-Site Request Forgery) protection using CSRF tokens in our JavaScript-based application. CSRF tokens are generated for each session and included in form submissions, ensuring that requests to the server are coming from a trusted source and not a malicious third party attempting to perform unauthorised actions on behalf of an authenticated user. ???????? CHECK ?????????
 
 ### Input Validation & Sanitisation
+
 Input validation and sanitisation were applied to all user-generated data to protect the application from common vulnerabilities, including SQL injection and Cross-Site Scripting (XSS) attacks. Specifically, we validated the following fields:
 
 - **Username:** Checked for proper formatting (e.g., no special characters that could be used for injection attacks).
@@ -77,8 +83,139 @@ Input validation and sanitisation were applied to all user-generated data to pro
 By validating and sanitising these fields, we minimised the risk of injection attacks and ensured that user input is handled securely.
 
 ### Consistent Application of Security Measures
+
 All security measures, from password hashing to input validation, were consistently applied across the application. We ensured that these best practices were not limited to a specific part of the platform, but were uniformly implemented wherever user input was processed or stored, thereby reducing vulnerabilities and improving overall application security.
 
 ## 4. Code Quality and Refactoring
+
+In order to maintain a high standard of software quality and ensure long-term maintainability, we undertook a series of refactoring efforts throughout the project. These improvements were aimed at enhancing both the clarity and efficiency of the codebase, while also ensuring that our solution adhered to best practices such as the Don't Repeat Yourself (DRY) principle. Refactoring was applied strategically across several areas of the application, including simplifying complex logic, breaking down large functions into smaller, reusable components, and eliminating redundant code.
+
+By focusing on code quality and refactoring, we aimed to improve readability, reduce technical debt, and enhance the maintainability of the project, ensuring that future developers can easily understand, extend, and modify the code. Below are key examples demonstrating the improvements made to the codebase.
+
+### 1. Readability and Style Consistency
+
+#### Example 1: Improving Spacing, Indentations, and Layout for Better Clarity
+
+<details>
+  <summary>Before Refactoring: loginFunctions.js (Readability and Style)</summary>
+  
+  ![Before Refactoring: loginFunctions.js](/images/beforeRefactorReadability.png)
+</details>
+
+<details>
+  <summary>After Refactoring: loginFunctions.js (Readability and Style)</summary>
+  
+  ![After Refactoring: loginFunctions.js](/images/afterRefactorReadability.png)
+</details>
+
+#### Example 2: Enhancing Variable Names and Commenting for Better Code Understanding
+
+<details>
+  <summary>Before Refactoring: loginFunctions.js (Naming and Comments)</summary>
+  
+  ![Before Refactoring: loginFunctions.js](/images/beforeNameAndComments.png)
+</details>
+
+<details>
+  <summary>After Refactoring: loginFunctions.js (Naming and Comments)</summary>
+  
+  ![After Refactoring: loginFunctions.js](/images/afterNameAndComments.png)
+</details>
+
+---
+
+### 2. Code Quality and Maintainability
+
+#### Example 1: Simplifying Complex Logic for Efficiency
+
+<details>
+  <summary>Before Refactoring: loginFunctions.js</summary>
+  
+  ![Before Refactoring: loginFunctions.js](/images/beforeSimplify.png)
+</details>
+
+<details>
+  <summary>After Refactoring: loginFunctions.js</summary>
+  
+  ![After Refactoring: loginFunctions.js](/images/afterSimplify.png)
+</details>
+
+#### Example 2: Breaking Down Large Functions into Smaller, Reusable Ones (DRY)
+
+<details>
+  <summary>Before Refactoring: loginFunctions.js</summary>
+  
+  ![Before Refactoring: loginFunctions.js](/images/beforeBreakDown.png)
+</details>
+
+<details>
+  <summary>After Refactoring: loginFunctions.js</summary>
+  
+  ![After Refactoring: loginFunctions.js](/images/afterBreakDown.png)
+</details>
+
+---
+
+### 3. Error Handling and Robustness (Optional) NEED TO DO !!!!!!!!!!!
+
+#### Example 1: Improving Error Handling with Try-Catch Blocks and User-Friendly Messages
+
+<details>
+  <summary>Before Refactoring: errorHandling.js</summary>
+  
+  ![Before Refactoring: errorHandling.js](/images/beforeErrorHandling.png)
+</details>
+
+<details>
+  <summary>After Refactoring: errorHandling.js</summary>
+  
+  ![After Refactoring: errorHandling.js](/images/afterErrorHandling.png)
+</details>
+
+#### Example 2: Adding Input Validation and Handling Edge Cases for Reliable Performance
+
+<details>
+  <summary>Before Refactoring: inputValidation.js</summary>
+  
+  ![Before Refactoring: inputValidation.js](/images/beforeInputValidation.png)
+</details>
+
+<details>
+  <summary>After Refactoring: inputValidation.js</summary>
+  
+  ![After Refactoring: inputValidation.js](/images/afterInputValidation.png)
+</details>
+
+---
+
+### 4. Performance Optimisation (Optional) NEED TO DO !!!!!!!!!!!
+
+#### Example 1: Refactoring to Speed Up Database Queries and Reduce Memory Usage
+
+<details>
+  <summary>Before Refactoring: databaseQuery.js</summary>
+  
+  ![Before Refactoring: databaseQuery.js](/images/beforeDatabaseQuery.png)
+</details>
+
+<details>
+  <summary>After Refactoring: databaseQuery.js</summary>
+  
+  ![After Refactoring: databaseQuery.js](/images/afterDatabaseQuery.png)
+</details>
+
+#### Example 2: Optimising Algorithms and Loops for Faster Execution Time
+
+<details>
+  <summary>Before Refactoring: slowAlgorithm.js</summary>
+  
+  ![Before Refactoring: slowAlgorithm.js](/images/beforeSlowAlgorithm.png)
+</details>
+
+<details>
+  <summary>After Refactoring: slowAlgorithm.js</summary>
+  
+  ![After Refactoring: slowAlgorithm.js](/images/afterSlowAlgorithm.png)
+</details>
 
 ## 5. CI/CD and Git Practices
