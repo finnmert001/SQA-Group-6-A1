@@ -92,7 +92,39 @@ In order to maintain a high standard of software quality and ensure long-term ma
 
 By focusing on code quality and refactoring, we aimed to improve readability, reduce technical debt, and enhance the maintainability of the project, ensuring that future developers can easily understand, extend, and modify the code. Below are key examples demonstrating the improvements made to the codebase.
 
-### 1. Readability and Style Consistency
+### 1. Error Handling and Robustness
+
+#### Example 1: Improving Error Handling with Try-Catch Blocks and User-Friendly Messages
+
+<details>
+  <summary>Before Refactoring: errorHandling.js</summary>
+  
+  ![Before Refactoring: errorHandling.js](/images/beforeErrorHandling.png)
+</details>
+
+<details>
+  <summary>After Refactoring: errorHandling.js</summary>
+  
+  ![After Refactoring: errorHandling.js](/images/beforeInputValidation.png)
+</details>
+
+#### Example 2: Adding Input Validation and Handling Edge Cases for Reliable Performance
+
+<details>
+  <summary>Before Refactoring: loginFunctions.js</summary>
+  
+  ![Before Refactoring: loginFunctions.js](/images/beforeInputValidation.png)
+</details>
+
+<details>
+  <summary>After Refactoring: loginFunctions.js</summary>
+  
+  ![After Refactoring: loginFunctions.js](/images/afterInputValidation.png)
+</details>
+
+---
+
+### 2. Readability and Style Consistency
 
 #### Example 1: Improving Spacing, Indentations, and Layout for Better Clarity
 
@@ -124,7 +156,7 @@ By focusing on code quality and refactoring, we aimed to improve readability, re
 
 ---
 
-### 2. Code Quality and Maintainability
+### 3. Code Quality and Maintainability
 
 #### Example 1: Simplifying Complex Logic for Efficiency
 
@@ -152,38 +184,6 @@ By focusing on code quality and refactoring, we aimed to improve readability, re
   <summary>After Refactoring: loginFunctions.js</summary>
   
   ![After Refactoring: loginFunctions.js](/images/afterBreakDown.png)
-</details>
-
----
-
-### 3. Error Handling and Robustness
-
-#### Example 1: Improving Error Handling with Try-Catch Blocks and User-Friendly Messages
-
-<details>
-  <summary>Before Refactoring: errorHandling.js</summary>
-  
-  ![Before Refactoring: errorHandling.js](/images/beforeErrorHandling.png)
-</details>
-
-<details>
-  <summary>After Refactoring: errorHandling.js</summary>
-  
-  ![After Refactoring: errorHandling.js](/images/beforeInputValidation.png)
-</details>
-
-#### Example 2: Adding Input Validation and Handling Edge Cases for Reliable Performance
-
-<details>
-  <summary>Before Refactoring: loginFunctions.js</summary>
-  
-  ![Before Refactoring: loginFunctions.js](/images/beforeInputValidation.png)
-</details>
-
-<details>
-  <summary>After Refactoring: loginFunctions.js</summary>
-  
-  ![After Refactoring: loginFunctions.js](/images/afterInputValidation.png)
 </details>
 
 ---
