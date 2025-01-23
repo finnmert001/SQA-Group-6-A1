@@ -172,6 +172,16 @@ function validateLoginDetailsFormat(username, password, confirmPassword) {
 }
 
 /**
+ * Validates that both username and password fields have been populated.
+ * @param {string} username - The username entered by the user.
+ * @param {string} password - The password entered by the user.
+ * @returns {boolean} Returns true if both fields populated, otherwise false.
+ */
+function presenceCheckLogin(username, password) { // checks that no fields were left blank
+  return username != "" && password != "";
+}
+
+/**
  * Checks if the username already exists in the database.
  * @param {string} username - The username to check for existence.
  * @returns {Object|null} The user object if found, null if not found.
@@ -197,7 +207,7 @@ async function checkPasswordMatch(password, comparePassword) {
  * @returns {Object|string} Returns the user object if valid or an error message if invalid.
  */
 async function validateLoginDetails(username, password) {
-  if (!username || !password) {
+  if (!presenceCheckLogin(username, password)) {
     return "Please fill in all fields";
   }
   const user = await userExists(username);
@@ -242,4 +252,6 @@ module.exports = {
   validateUserAndSignup,
   validateUserAndLogin,
   updateUserDetails,
+  validateLoginDetailsFormat,
+  presenceCheckLogin
 };
