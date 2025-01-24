@@ -124,15 +124,15 @@ Screenshots of the test suite in action, including unit tests, integration tests
 <details>
   <summary>Example Unit Tests</summary>
   
-  ![Unit Test 1](/images/passwordHashing.png)
-  ![Unit Test 2](/images/passwordHashing.png)
+  ![Unit Test 1](/images/loginFunctionsUnitTest1.png)
+  ![Unit Test 2](/images/loginFunctionsUnitTest2.png)
 </details>
 
 <details>
   <summary>Example Integration Tests</summary>
   
-  ![Integration Test 1](/images/passwordHashing.png)
-  ![Integration Test 2](/images/passwordHashing.png)
+  ![Integration Test 1](/images/loginDatabaseIntegrationTest1.png)
+  ![Integration Test 2](/images/loginDatabaseIntegrationTest2.png)
 </details>
 
 <details>
