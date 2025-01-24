@@ -18,13 +18,41 @@
 
 The project was developed collaboratively by the following team members, each contributing to different aspects of the application. Below is an outline of their responsibilities and the percentage of their contributions:
 
-- Finn Merton – Responsible for feature implementation, including user authentication and blog post management. Contributed 35%.
-- Johnny Connolly – Handled testing, security enhancements, and bug fixes. Contributed 25%.
-- Mohsin Khan – Focused on user interface design and accessibility features. Contributed 20%.
+- **Finn Merton:** Responsible for the implementation of the search and sorting feature, collaborating with Johnny on the profile management feature, CSS styling, bug fixing, code refactoring, and input validation for updating profile details. Contributed **40%**.
+- **Johnny Connolly:** Led the development of the login and signup/user authentication feature, including setting up the RESTdb database for user authentication. Worked with Finn on the profile management feature, and created unit and integration tests. Contributed **35%**.
+- **Mohsin Khan:** Focused on implementing the dark mode feature, bug fixing, and creating unit and integration tests. Contributed **25%**.
 
 These contributions were achieved through constant collaboration and communication, ensuring that the project adhered to best practices and deadlines.
 
 ## 2. Setup Instructions
+
+To run and test the application locally, please follow the steps below:
+
+**1. Clone the respository:**
+https://github.com/finnmert001/SQA-Group-6-A1.git
+
+**2. Install Dependencies:**
+
+Navigate into the project directory and run:
+`npm install`
+
+**3. Configure Environment Variables:**
+
+Ensure that you have the required environment variable set up. Create a `.env` file in the root directory and include the following variable:
+
+- `REST_DB_API_KEY=cc01d1c5debb81a181f683c8626e2fad9b4ca`
+
+**4. Run the Application:**
+
+After installing dependencies and setting up the environment, start the application with:
+`npm start`
+
+The application should now be running on http://localhost:3000.
+
+**5. Run tests:**
+
+To run the unit and integration tests, execute the following command:
+`npm start`
 
 ## 3. Feature Implementation
 
@@ -34,7 +62,7 @@ In addition to the core CRUD operations (Create, Read, Update, Delete) for manag
 
 - Implemented user registration and login functionality, enabling users to securely create accounts and access the platform.
 - Utilised bcrypt for password hashing, ensuring the secure storage of user passwords in the REST database.
-- Integrated session management to maintain user login states across pages, ensuring that unauthenticated users are restricted from accessing protected content. ???? CHECK ????
+- Integrated session management to maintain user login states across pages, ensuring that unauthenticated users are restricted from accessing protected content.
 - Developed a logout feature, allowing users to securely terminate their sessions.
 - Implemented comprehensive error handling for both login and registration forms (e.g., invalid credentials, duplicate accounts).
 - Provided feedback messages for failed login and registration attempts.
