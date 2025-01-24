@@ -4,13 +4,29 @@
 
 ---
 
-1. [Feature Implementation](#1-feature-implementation)
-2. [Testing](#2-testing)
-3. [Security Enhancements](#3-security-enhancements)
-4. [Code Quality and Refactoring](#4-code-quality-and-refactoring)
-5. [CI/CD and Git Practices](#5-cicd-and-git-practices)
+1. [Team Contributions](#1-team-contributions)
+2. [Setup Instructions](#2-setup-instructions)
+3. [Feature Implementation](#3-feature-implementation)
+4. [Testing](#4-testing)
+5. [Security Enhancements](#5-security-enhancements)
+6. [Code Quality and Refactoring](#6-code-quality-and-refactoring)
+7. [CI/CD and Git Practices](#7-cicd-and-git-practices)
+8. [Challenges and Potential Enhancements](#8-challenges-and-potential-enhancements)
+9. [Summary](#9-summary)
 
-## 1. Feature Implementation
+## 1. Team Contributions
+
+The project was developed collaboratively by the following team members, each contributing to different aspects of the application. Below is an outline of their responsibilities and the percentage of their contributions:
+
+- Finn Merton – Responsible for feature implementation, including user authentication and blog post management. Contributed 35%.
+- Johnny Connolly – Handled testing, security enhancements, and bug fixes. Contributed 25%.
+- Mohsin Khan – Focused on user interface design and accessibility features. Contributed 20%.
+
+These contributions were achieved through constant collaboration and communication, ensuring that the project adhered to best practices and deadlines.
+
+## 2. Setup Instructions
+
+## 3. Feature Implementation
 
 In addition to the core CRUD operations (Create, Read, Update, Delete) for managing blog posts, our team implemented four additional features to further enhance the functionality and overall user experience of the web application. These features are as follows:
 
@@ -51,11 +67,53 @@ In addition to the core CRUD operations (Create, Read, Update, Delete) for manag
 - Stored user preferences (light/dark mode) in the database, enabling a personalised experience that persists across sessions.
 - Ensured compliance with WCAG (Web Content Accessibility Guidelines) for color contrast and readability, making the application inclusive for all users, including those with visual impairments.
 
-## 2. Testing
+## 4. Testing
 
-NEED TO FINISH TESTING THEN WILL WRITE ABOUT IT
+To ensure the robustness and reliability of the application, we implemented a comprehensive suite of unit and integration tests. Our testing strategy focused on validating both individual components and their interactions, ensuring that the application behaves as expected across various scenarios.
 
-## 3. Security Enhancements
+### Test Suite Structure
+
+The tests are organised into a well-structured folder hierarchy, with each test file clearly corresponding to the module it tests. This structure makes it easy to navigate the test suite, while ensuring that test cases are clearly organised and well-documented. **Each test case includes a description of its purpose, expected behaviour, and any relevant edge cases it covers.**
+
+### Testing Approach
+
+We used Behaviour-Driven Development (BDD) principles for testing user-facing functionality. This approach focused on validating application behaviour from the user's perspective, ensuring that features align with expected outcomes in real-world use cases. BDD scenarios were written to describe the desired behaviour in a clear, natural language format, making them easier for both developers and non-developers to understand. These tests ensured that key workflows, such as form submissions and database API interactions, functioned correctly from a user's point of view.
+
+In addition to BDD, we wrote unit tests to validate individual components and functions in isolation, as well as integration tests to verify that different parts of the application work together as intended. These tests cover a range of functionality, including user interactions, and both blog posts and user authentication (API) database operations.
+
+### Test Coverage
+
+A generated test coverage report provides a detailed breakdown of the codebase's coverage, highlighting areas that have been thoroughly tested and identifying any portions that may need further attention. We aimed for high coverage in critical sections of the application, prioritising tests that add meaningful value over achieving full code coverage.
+
+### Edge Case and Error Testing
+
+We paid particular attention to edge cases and error conditions, ensuring that the application behaves reliably even under unexpected or adverse conditions. Tests were written to cover scenarios such as invalid inputs and malformed data, to ensure the system handles these gracefully without crashing or producing incorrect results.
+
+### Evidence of Testing
+
+Screenshots of the test suite in action, including unit tests, integration tests, and the generated coverage report, are provided below for verification.
+
+<details>
+  <summary>Example Unit Tests</summary>
+  
+  ![Unit Test 1](/images/passwordHashing.png)
+  ![Unit Test 2](/images/passwordHashing.png)
+</details>
+
+<details>
+  <summary>Example Integration Tests</summary>
+  
+  ![Integration Test 1](/images/passwordHashing.png)
+  ![Integration Test 2](/images/passwordHashing.png)
+</details>
+
+<details>
+  <summary>Test Coverage Report</summary>
+  
+  ![Test Coverage Report](/images/passwordHashing.png)
+</details>
+
+## 5. Security Enhancements
 
 In order to secure user data and protect the application from common vulnerabilities, we implemented several key security measures throughout the project:
 
@@ -85,18 +143,6 @@ To prevent duplicate or unauthorised accounts, we ensured that users cannot regi
 
 ---
 
-### CSRF Protection
-
-We implemented CSRF (Cross-Site Request Forgery) protection using CSRF tokens in our JavaScript-based application. CSRF tokens are generated for each session and included in form submissions, ensuring that requests to the server are coming from a trusted source and not a malicious third party attempting to perform unauthorised actions on behalf of an authenticated user. ???????? CHECK ?????????
-
-<details>
-  <summary>CSRF Protection Relevant Code</summary>
-  
-  ![CSRF Protection](/images/beforeErrorHandling.png)
-</details>
-
----
-
 ### Input Validation & Sanitisation
 
 Input validation and sanitisation were applied to all user-generated data to protect the application from common vulnerabilities, including SQL injection and Cross-Site Scripting (XSS) attacks. Specifically, we validated the following fields:
@@ -120,11 +166,17 @@ By validating and sanitising these fields, we minimised the risk of injection at
 
 ---
 
+### CSRF Protection
+
+While we recognise that implementing CSRF (Cross-Site Request Forgery) protection is a best practice for enhancing security, we encountered technical challenges during implementation. We attempted to integrate CSRF tokens in our JavaScript-based application, which are typically used to ensure that form submissions are coming from trusted sources. However, despite our efforts, we faced issues with token validation, often receiving the error "invalid CSRF token." As a result, CSRF protection is not fully functional in this version of the application.
+
+---
+
 ### Consistent Application of Security Measures
 
 All security measures, from password hashing to input validation, were consistently applied across the application. We ensured that these best practices were not limited to a specific part of the platform, but were uniformly implemented wherever user input was processed or stored, thereby reducing vulnerabilities and improving overall application security.
 
-## 4. Code Quality and Refactoring
+## 6. Code Quality and Refactoring
 
 In order to maintain a high standard of software quality and ensure long-term maintainability, we undertook a series of refactoring efforts throughout the project. These improvements were aimed at enhancing both the clarity and efficiency of the codebase, while also ensuring that our solution adhered to best practices such as the Don't Repeat Yourself (DRY) principle. Refactoring was applied strategically across several areas of the application, including simplifying complex logic, breaking down large functions into smaller, reusable components, and eliminating redundant code.
 
@@ -242,7 +294,7 @@ By focusing on code quality and refactoring, we aimed to improve readability, re
   ![After Refactoring: index.js](/images/afterDatabaseQuery.png)
 </details>
 
-## 5. CI/CD and Git Practices
+## 7. CI/CD and Git Practices
 
 This project follows best practices for CI/CD and version control to maintain a high-quality, collaborative, and streamlined development pipeline.
 
@@ -308,10 +360,12 @@ The following evidence highlights the collaborative efforts of the team:
 
 ---
 
-### Challenges and Future Enhancements
+## 8. Challenges and Potential Enhancements
 
-Although the team initially attempted to implement linting tools like ESLint to enforce consistent coding standards, technical difficulties prevented their integration during this iteration. However, the project compensates for this by enforcing mandatory code reviews and following structured Git workflows. Adding automated linting remains a priority for future updates to the project.
+Although we recognise the importance of using security best practices like CSRF protection and tools such as ESLint to enforce consistent coding standards, we encountered technical challenges that prevented their successful implementation in this iteration of the project. Specifically, while we attempted to integrate CSRF tokens for enhanced security, issues with token validation led to the feature not functioning as intended. Similarly, despite efforts to integrate ESLint, technical difficulties hindered its setup.
 
-### Summary
+To mitigate these gaps, we have enforced mandatory code reviews and adhered to structured Git workflows. We acknowledge that implementing CSRF protection and linting practices would significantly improve both security and code quality.
+
+## 9. Summary
 
 The project’s CI/CD and Git practices ensure robust, maintainable, and scalable development. By employing branch protection rules, mandatory reviews, feature branching, and pull request workflows, the team fosters collaboration and high code quality. Screenshots of commit history, branches, and pull requests provide concrete evidence of these practices in action.
