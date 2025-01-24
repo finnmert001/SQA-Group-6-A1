@@ -205,3 +205,75 @@ By focusing on code quality and refactoring, we aimed to improve readability, re
 </details>
 
 ## 5. CI/CD and Git Practices
+
+This project follows best practices for CI/CD and version control to maintain a high-quality, collaborative, and streamlined development pipeline.
+
+### Version Control with Git
+
+To ensure an organised and efficient workflow, the team employs the following Git practices:
+
+- **Branching Strategy**:  
+  Each team member works on individual feature branches named consistently (e.g., `Finn-dev`, `Johnny-dev`, `Mohsin-dev`). This approach ensures that the `main` branch remains stable and avoids conflicts during development.
+- **Commit History**:  
+  Changes are committed regularly with clear and descriptive messages to document progress and provide an auditable history. This helps track contributions, debug issues, and understand the purpose of each update.
+- **Pull Requests for Collaboration**:  
+  All changes are integrated into the `main` branch through pull requests (PRs). These PRs are reviewed by at least one other team member to ensure code quality, correctness, and adherence to project standards.
+
+### Branch Protection and Review Enforcement
+
+The project leverages GitHub's branch protection rules to safeguard the `main` branch and enforce collaborative development:
+
+- **Pull Request Requirement**:  
+  All changes must be submitted via pull requests to the `main` branch, ensuring that direct pushes are disallowed.
+- **Mandatory Code Reviews**:  
+  Each pull request requires review and approval from at least one team member before merging. The team collaborates closely during reviews, with additional calls or meetings held to demonstrate functionality before final approval.
+- **Challenges with Automated Linting**:  
+  The team explored integrating ESLint into the GitHub Actions workflow to enforce coding standards and improve code quality automatically. While we recognise this is a best practice for maintaining a professional codebase, technical challenges prevented its implementation in the current development cycle.
+
+Branch protection and review rules ensure that only verified and peer-reviewed code is integrated into the production-ready `main` branch.
+
+### Evidence of Collaboration
+
+The following evidence highlights the collaborative efforts of the team:
+
+- **Commit History**:  
+  The project includes a detailed log of commits from all contributors, demonstrating active participation and regular updates.
+  <details>
+  <summary>Evidence of Commit History</summary>
+
+  ![Commit History](/images/commitHistory.png)
+  ![Commit History 2](/images/commitHistory1.png)
+
+  </details>
+
+---
+
+- **Feature Branches**:  
+  Screenshots of branches (e.g., `Finn-dev`, `Johnny-dev`, `Mohsin-dev`) illustrate the structured approach to dividing work and managing development.
+  <details>
+  <summary>Evidence of Feature Branches</summary>
+
+  ![Feature Branches](/images/featureBranches.png)
+
+  </details>
+
+---
+
+- **Pull Requests**:  
+  Examples of pull requests include descriptive titles, meaningful discussions, and approvals, showcasing the team’s commitment to quality and collaboration.
+  <details>
+  <summary>Evidence of Pull Requests</summary>
+
+  ![Pull Requests](/images/pullRequest.png)
+  ![Pull Requests 2](/images/pullRequest1.png)
+  </details>
+
+---
+
+### Challenges and Future Enhancements
+
+Although the team initially attempted to implement linting tools like ESLint to enforce consistent coding standards, technical difficulties prevented their integration during this iteration. However, the project compensates for this by enforcing mandatory code reviews and following structured Git workflows. Adding automated linting remains a priority for future updates to the project.
+
+### Summary
+
+The project’s CI/CD and Git practices ensure robust, maintainable, and scalable development. By employing branch protection rules, mandatory reviews, feature branching, and pull request workflows, the team fosters collaboration and high code quality. Screenshots of commit history, branches, and pull requests provide concrete evidence of these practices in action.
