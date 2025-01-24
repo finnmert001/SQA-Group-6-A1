@@ -1,5 +1,7 @@
 # Software Quality Assurance - Group 6
 
+The demonstration of the Blog Posts application can be found [here](https://drive.google.com/file/d/1FLqnyMuS1KMdmg1ene4oVPmz27uudDdw/view?usp=sharing).
+
 ### Table of Contents
 
 ---
