@@ -119,6 +119,10 @@ A generated test coverage report provides a detailed breakdown of the codebase's
 
 We paid particular attention to edge cases and error conditions, ensuring that the application behaves reliably even under unexpected or adverse conditions. Tests were written to cover scenarios such as invalid inputs and malformed data, to ensure the system handles these gracefully without crashing or producing incorrect results.
 
+### Issues with Failing Test Files
+
+While most tests passed successfully, two test files, `loginDatabase.test.js` and `blog.unit.test.js`, failed during the testing process. These failures were not fully resolved within the timeframe, and we were unable to determine the root cause. As a result, these specific tests were excluded from the final coverage report.
+
 ### Evidence of Testing
 
 Screenshots of the test suite in action, including unit tests, integration tests, and the generated coverage report, are provided below for verification.
@@ -140,7 +144,7 @@ Screenshots of the test suite in action, including unit tests, integration tests
 <details>
   <summary>Test Coverage Report</summary>
   
-  ![Test Coverage Report](/images/passwordHashing.png)
+  ![Test Coverage Report](/images/testCoverage.png)
 </details>
 
 ## 5. Security Enhancements
