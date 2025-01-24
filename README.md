@@ -61,15 +61,41 @@ In order to secure user data and protect the application from common vulnerabili
 
 ### Password Hashing
 
-We utilised bcrypt for password hashing, ensuring that user passwords are stored securely and are never kept in plaintext. Hashing passwords before storing them in the database significantly reduces the risk of exposure in the event of a data breach. The use of bcrypt also ensures that passwords are stored with a salt ????????? CHECK ??????????? and a configurable number of hashing rounds, making them computationally expensive to crack.
+We utilised bcrypt for password hashing, ensuring that user passwords are stored securely and are never kept in plaintext. Hashing passwords before storing them in the database significantly reduces the risk of exposure in the event of a data breach. The use of bcrypt also ensures that passwords are stored with a configurable number of hashing rounds, making them computationally expensive to crack.
+
+<details>
+  <summary>Password Hashing Relevant Code</summary>
+  
+  ![Password Hashing](/images/passwordHashing.png)
+  ![Password Hashing](/images/passwordHashing1.png)
+</details>
+
+---
 
 ### Account Uniqueness
 
 To prevent duplicate or unauthorised accounts, we ensured that users cannot register with an existing username. This prevents conflicts and potential security issues such as impersonation. During both the registration and login processes, the system checks for uniqueness, ensuring that no two accounts share the same username.
 
+<details>
+  <summary>Account Uniqueness Relevant Code</summary>
+  
+  ![Account Uniqueness](/images/accountUnique.png)
+  ![Account Uniqueness](/images/inputValidation4.png)
+</details>
+
+---
+
 ### CSRF Protection
 
 We implemented CSRF (Cross-Site Request Forgery) protection using CSRF tokens in our JavaScript-based application. CSRF tokens are generated for each session and included in form submissions, ensuring that requests to the server are coming from a trusted source and not a malicious third party attempting to perform unauthorised actions on behalf of an authenticated user. ???????? CHECK ?????????
+
+<details>
+  <summary>CSRF Protection Relevant Code</summary>
+  
+  ![CSRF Protection](/images/beforeErrorHandling.png)
+</details>
+
+---
 
 ### Input Validation & Sanitisation
 
@@ -81,6 +107,18 @@ Input validation and sanitisation were applied to all user-generated data to pro
 - **Full name:** Ensured that names follow a basic structure, allowing only alphabetic characters and a space between the forename and surname.
 
 By validating and sanitising these fields, we minimised the risk of injection attacks and ensured that user input is handled securely.
+
+<details>
+  <summary>Input Validation & Sanitisation Relevant Code</summary>
+  
+  ![Input Validation & Sanitisation](/images/inputValidation.png)
+  ![Input Validation & Sanitisation](/images/inputValidation1.png)
+  ![Input Validation & Sanitisation](/images/inputValidation2.png)
+  ![Input Validation & Sanitisation](/images/inputValidation3.png)
+  ![Input Validation & Sanitisation](/images/inputValidation4.png)
+</details>
+
+---
 
 ### Consistent Application of Security Measures
 
